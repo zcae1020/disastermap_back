@@ -1,5 +1,6 @@
 package disastermap.dmap.domain;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class DM {
@@ -56,5 +57,17 @@ public class DM {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "DM{" +
+                "id=" + id +
+                ", disasterCode='" + disasterCode + '\'' +
+                ", LatLng=" + Arrays.toString(LatLng) +
+                ", place='" + place + '\'' +
+                ", content='" + content + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <form action="/disasterMessage/new" method="post">
+        <div class="form-group">
+            <div class="place">
+                <input type="text" id="place" name="place" placeholder="장소">
+                <button>장소찾기</button>
+            </div>
+            <input type="text" id="dCode" name="dCode" placeholder="재난코드">
+            <input type="text" id="content" name="content" placeholder="내용">
+        </div>
+        <button type="submit">등록</button>
+    </form>
+</div> <!-- /container -->
+<script src="js/searchPlace.js"></script>
+</body>
+</html>

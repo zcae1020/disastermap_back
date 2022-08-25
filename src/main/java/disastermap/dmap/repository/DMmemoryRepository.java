@@ -14,9 +14,20 @@ public class DMmemoryRepository implements DMrepository{
 
     @Override
     public DM save(DM dm) {
-        dm.setId(ID);
+        dm.setId(++ID);
         dmArrayList.add(dm);
         return dm;
+    }
+
+    @Override
+    public DM findById(Long id) {
+        for(DM dm:dmArrayList){
+            if(dm.getId()==id){
+                return dm;
+            }
+        }
+
+        return null;
     }
 
     @Override

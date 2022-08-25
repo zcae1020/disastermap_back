@@ -1,24 +1,45 @@
 package disastermap.dmap.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import disastermap.dmap.domain.DM;
+import disastermap.dmap.service.DMservice;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
-@CrossOrigin(origins = "https://disastermap.zcae1020.repl.co")
 @Controller
 public class dmController {
 
-    @ResponseBody
-    @GetMapping("/")
-    public ArrayList<dmForm> dmApi() {
-        ArrayList<dmForm> arrayList = new ArrayList<>();
-        dmForm df = new dmForm();
-        df.setName("name");
+    DMservice dMservice;
 
-        arrayList.add(df);
-        arrayList.add(new dmForm());
+    @Autowired
+    public dmController(DMservice dMservice) {
+        this.dMservice = dMservice;
+    }
 
-        return arrayList;
+    @GetMapping("/disasterMessage/new")
+    public String createDMForm(){
+        return "DMpage/DMsubmit";
+    }
+
+    @PostMapping("/disasterMessage/new")
+    public String createDM(dmForm dmform) {
+        DM dm = new DM();
+        dm.setDisasterCode(dmform.getdCode());
+        dm.setPlace(dmform.getPlace());
+        dm.setContent(dmform.getContent());
+
+        Date date = new Date();
+        dm.setDate(date);
+
+        System.out.println(dmform.toString()+'\n'+dm);
+
+        dMservice.join(dm);
+
+        return "redirect:/";
     }
 }

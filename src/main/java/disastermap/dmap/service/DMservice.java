@@ -14,11 +14,12 @@ public class DMservice {
         this.dMrepository = dMrepository;
     }
 
-    public DM join(DM dm){
-        return dMrepository.save(dm);
+    public Long join(DM dm){
+        DM res = dMrepository.save(dm);
+        return (res==null?0:res.getId());
     }
 
-    public List<DM> getAllDM(){
+    public List<DM> findDMs(){
         return dMrepository.findAll();
     }
 }
