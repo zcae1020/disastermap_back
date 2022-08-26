@@ -27,6 +27,6 @@ public class apiController {
     public List<DM> dmApi(){
         List<DM> list = dMservice.findDMs();
         System.out.println(list);
-        return dMservice.findDMs();
+        return list;
     }
 }

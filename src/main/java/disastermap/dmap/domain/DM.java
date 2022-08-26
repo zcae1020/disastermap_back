@@ -8,7 +8,16 @@ public class DM {
     private Long id;
     private String disasterCode; //산사태: 01, 홍수(침수): 02
     private double LatLng[];
-    private String place, content;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    private String address, place, content;
     private Date date;
 
     public String getDisasterCode() {
