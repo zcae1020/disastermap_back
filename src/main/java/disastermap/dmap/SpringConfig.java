@@ -2,7 +2,9 @@ package disastermap.dmap;
 
 import disastermap.dmap.repository.DMmemoryRepository;
 import disastermap.dmap.repository.DMrepository;
-import disastermap.dmap.service.DMservice;
+import disastermap.dmap.repository.dCodeSet;
+import disastermap.dmap.service.DMserviceDcodeClass;
+import disastermap.dmap.service.DMserviceInterface;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,7 +17,12 @@ public class SpringConfig {
     }
 
     @Bean
-    public DMservice dMservice(DMrepository dMrepository){
-        return new DMservice(dMrepository);
+    public dCodeSet dCodeSet(){
+        return new dCodeSet();
+    }
+
+    @Bean
+    public DMserviceInterface dMservice(DMrepository dMrepository, dCodeSet codeSet){
+        return new DMserviceDcodeClass(dMrepository, codeSet);
     }
 }

@@ -1,19 +1,41 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/search.css}">
+    <link rel="stylesheet" th:href="@{/css/modal.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+</head>
 <body>
 <div class="container">
+    <div class="modal">
+        <div class="modal_body">
+            <div id="search">
+                <form id="searchbar">
+                    <input id="searchtext" type="text" placeholder="장소검색">
+                </form>
+                <ul id="searchresult"></ul>
+            </div>
+            <div id="searchbackground"></div>
+            <div id="map" style="width: 100%;height: 100%;position: absolute;top:0px;overflow: hidden;"></div>
+        </div>
+    </div>
     <form action="/disasterMessage/new" method="post">
         <div class="form-group">
             <div class="place">
-                <input type="text" id="place" name="place" placeholder="장소">
-                <button>장소찾기</button>
+                <button id="searchBtn" type="button">장소찾기</button>
+                <input type="text" id="place" name="place" placeholder="장소" readonly><br>
+                <input type="text" id="address" name="address" style="width:500px" placeholder="주소" readonly><br>
+                <input type="text" id="x" name="x" placeholder="x" readonly>
+                <input type="text" id="y" name="y" placeholder="y" readonly>
             </div>
             <input type="text" id="dCode" name="dCode" placeholder="재난코드">
             <input type="text" id="content" name="content" placeholder="내용">
         </div>
         <button type="submit">등록</button>
     </form>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=625eb3d4cd28e2a2560c1e86b5fc221c"></script>
+    <script th:src="@{/js/searchPlace.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
 </div> <!-- /container -->
-<script src="js/searchPlace.js"></script>
 </body>
 </html>

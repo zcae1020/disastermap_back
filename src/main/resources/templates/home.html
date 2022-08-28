@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <div class="container">
@@ -12,17 +13,19 @@
                 <th>#</th>
                 <th>재난</th>
                 <th>장소</th>
-                <th>내용</th>
+                <th>주소</th>
                 <th>일시</th>
+                <th>유효</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="dm : ${dms}">
+            <tr th:each="dm : ${dms}" th:id="${dm.id}" th:onclick="|location.href='@{content(dmId=${dm.id})}'|" style="cursor:pointer;">
                 <td th:text="${dm.id}"></td>
                 <td th:text="${dm.disasterCode}"></td>
-                <td th:text="${dm.place}"></td>
-                <td th:text="${dm.content}"></td>
+                <td th:text="${dm.kakaoPlace?.place}"></td>
+                <td th:text="${dm.kakaoPlace?.address}"></td>
                 <td th:text="${dm.date}"></td>
+                <td th:text="${dm.valid}?'O':'X'"></td>
             </tr>
             </tbody>
         </table>

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <p th:text="${content}"></p>
+    <a href="/">홈</a>
+    <form th:action="@{/content(dmId = ${dmId})}", method="POST">
+        <button type="submit">재난상황종료</button>
+    </form>
+    <form th:action="@{/content/real(dmId = ${dmId})}", method="POST">
+        <button type="submit">삭제하기</button>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>

@@ -3,22 +3,31 @@ package disastermap.dmap.domain;
 import java.util.Arrays;
 import java.util.Date;
 
-public class DM {
+public class DM implements Cloneable{
 
     private Long id;
-    private String disasterCode; //산사태: 01, 홍수(침수): 02
-    private double LatLng[];
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    private String address, place, content;
+    //산사태: 01, 홍수(침수): 02
+    private String disasterCode, content;
+    private KakaoPlace kakaoPlace;
     private Date date;
+    private boolean valid;
+
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean valid) {
+        this.valid = valid;
+    }
+
+    public KakaoPlace getKakaoPlace() {
+        return kakaoPlace;
+    }
+
+    public void setKakaoPlace(KakaoPlace kakaoPlace) {
+        this.kakaoPlace = kakaoPlace;
+    }
 
     public String getDisasterCode() {
         return disasterCode;
@@ -34,22 +43,6 @@ public class DM {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public double[] getLatLng() {
-        return LatLng;
-    }
-
-    public void setLatLng(double[] latLng) {
-        LatLng = latLng;
-    }
-
-    public String getPlace() {
-        return place;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
     }
 
     public String getContent() {
@@ -73,10 +66,13 @@ public class DM {
         return "DM{" +
                 "id=" + id +
                 ", disasterCode='" + disasterCode + '\'' +
-                ", LatLng=" + Arrays.toString(LatLng) +
-                ", place='" + place + '\'' +
                 ", content='" + content + '\'' +
                 ", date=" + date +
                 '}';
+    }
+
+    @Override
+    public DM clone() throws CloneNotSupportedException{
+        return (DM) super.clone();
     }
 }

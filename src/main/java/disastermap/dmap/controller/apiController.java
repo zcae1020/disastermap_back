@@ -1,7 +1,7 @@
 package disastermap.dmap.controller;
 
 import disastermap.dmap.domain.DM;
-import disastermap.dmap.service.DMservice;
+import disastermap.dmap.service.DMserviceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,18 +15,17 @@ import java.util.List;
 @Controller
 public class apiController {
 
-    DMservice dMservice;
+    private DMserviceInterface dMservice;
 
     @Autowired
-    public apiController(DMservice dMservice) {
+    public apiController(DMserviceInterface dMservice) {
         this.dMservice = dMservice;
     }
 
     @ResponseBody
     @GetMapping("/api")
     public List<DM> dmApi(){
-        List<DM> list = dMservice.findDMs();
-        System.out.println(list);
+        List<DM> list = dMservice.findValidDMs();
         return list;
     }
 }

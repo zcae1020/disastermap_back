@@ -1,0 +1,34 @@
+#search{
+  position: absolute;
+  z-index: 1234;
+  width: 200px;
+  top: 10px;
+}
+
+#searchbar{
+  display:inline-block;
+  position: relative;
+}
+
+#searchresult{
+  display: none;
+  position: absolute;
+  overflow: scroll;
+  cursor:pointer;
+  left:-20px;
+  max-height: 600px;
+}
+
+#searchresult::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+#searchbackground{
+  display: none;
+  position: absolute;
+  z-index: 9;
+  background-color: white;
+  top:0px;
+  height: 100%;
+  width: 200px;
+}

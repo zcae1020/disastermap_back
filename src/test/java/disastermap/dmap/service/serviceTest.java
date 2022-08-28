@@ -19,9 +19,7 @@ public class serviceTest {
     void join(){
         DM dm = new DM();
         dm.setContent("침수");
-        dm.setPlace("경부고속도로");
         dm.setDisasterCode("02");
-        dm.setLatLng(new double[]{13, 23});
 
         Long id = dMservice.join(dm);
 
@@ -36,9 +34,7 @@ public class serviceTest {
 
         DM dm = new DM();
         dm.setContent("침수");
-        dm.setPlace("경부고속도로");
         dm.setDisasterCode("02");
-        dm.setLatLng(new double[]{13, 23});
 
         Long id = dMservice.join(dm);
 
