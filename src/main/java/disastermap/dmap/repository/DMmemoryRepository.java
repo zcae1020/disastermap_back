@@ -15,26 +15,40 @@ public class DMmemoryRepository implements DMrepository{
     private ArrayList<DM> dmArrayList;
     private Long ID;
 
+    public void createExample(){
+        this.dmArrayList.add(new DM(
+                ++ID,
+                "03",
+                "[화성시청] 오늘 04:55시 기준 향남읍 풍무교 고가하부 (향남읍 630-3) 차량통제 중이니, 차량 우회 등 안전 운행하시기 바랍니다.",
+                "풍무교",
+                "경기 화성시 향남읍 상신리",
+                new LatLng(37.0987344264014, 126.902601295029)
+        ));
+
+        this.dmArrayList.add(new DM(
+                ++ID,
+                "02",
+                "[한강홍수통제소]오늘 04:50 진위천 평택시(동연교) 홍수주의보 발령, 방송 등을 통해 홍수상황을 확인하시고, 하천변 이용을 자제하시기 바랍니다.",
+                "동연교",
+                "경기 평택시 고덕면 동청리",
+                new LatLng(37.0526971899244, 126.995763922141)
+        ));
+
+        this.dmArrayList.add(new DM(
+                ++ID,
+                "03",
+                "[화성시청] 오늘 18시 기준 국도43호선(봉영로) 진안2지하차도~태안지하차도 구간 차량통제 중이니, 차량 우회 등 안전 운행하시기 바랍니다.",
+                "진안2지하차도",
+                "경기 화성시 진안동",
+                new LatLng(37.2131834921958, 127.029827893536)
+        ));
+    }
+
     public DMmemoryRepository() {
         this.dmArrayList = new ArrayList<>();
         this.ID = 0L;
 
-        DM dm = new DM();
-
-        LatLng latLng = new LatLng(37.5821159805264, 127.002785057425);
-        KakaoPlace kakaoPlace = new KakaoPlace();
-        kakaoPlace.setPlace("장");
-        kakaoPlace.setAddress("서울 종로구 동숭동 1-62");
-        kakaoPlace.setLatLng(latLng);
-
-        dm.setDisasterCode("01");
-        dm.setContent("산사태");
-        dm.setDate(new Date());
-        dm.setValid(true);
-        dm.setKakaoPlace(kakaoPlace);
-        dm.setId(++ID);
-
-        this.dmArrayList.add(dm);
+        createExample();
     }
 
     @Override

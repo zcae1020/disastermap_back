@@ -7,6 +7,10 @@
     {
       "codeNum": "02",
       "content": "홍수"
+    },
+    {
+      "codeNum": "03",
+      "content": "차량통제"
     }
   ]
 }

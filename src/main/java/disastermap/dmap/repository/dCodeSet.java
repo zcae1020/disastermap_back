@@ -11,10 +11,7 @@ public class dCodeSet {
 
         dCodeSet.add(new dCode("01", "산사태"));
         dCodeSet.add(new dCode("02", "홍수"));
-
-        for(dCode dc: dCodeSet){
-            System.out.println(dc.getCodeNum());
-        }
+        dCodeSet.add(new dCode("03", "차량통제"));
     }
 
     public Set<dCode> getdCodeSet() {

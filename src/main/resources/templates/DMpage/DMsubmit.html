@@ -28,8 +28,9 @@
                 <input type="text" id="x" name="x" placeholder="x" readonly>
                 <input type="text" id="y" name="y" placeholder="y" readonly>
             </div>
-            <input type="text" id="dCode" name="dCode" placeholder="재난코드">
-            <input type="text" id="content" name="content" placeholder="내용">
+            <input type="text" id="dCode" name="dCode" placeholder="재난코드" maxlength="2">
+            <textarea type="text" id="content" name="content" placeholder="내용" style="width:500px;height:100px;"></textarea>
+            <!--<input type="text" id="content" name="content" placeholder="내용" style="width:500px;height:100px;overflow:hidden;overflow-wrap: break-word;">-->
         </div>
         <button type="submit">등록</button>
     </form>

@@ -39,29 +39,18 @@ public class dmController {
             return "DMpage/DMsubmit";
         }
 
-        DM dm = new DM();
-
-        LatLng latLng = new LatLng(Double.parseDouble(dmform.getX()), Double.parseDouble(dmform.getY()));
-        KakaoPlace kakaoPlace = new KakaoPlace();
-        kakaoPlace.setPlace(dmform.getPlace());
-        kakaoPlace.setAddress(dmform.getAddress());
-        kakaoPlace.setLatLng(latLng);
-
-        dm.setDisasterCode(dmform.getdCode());
-        dm.setContent(dmform.getContent());
-        dm.setDate(new Date());
-        dm.setValid(true);
-        dm.setKakaoPlace(kakaoPlace);
-
-        dMservice.join(dm);
+        dMservice.join(new DM(
+                dmform.getdCode(),
+                dmform.getContent(),
+                dmform.getPlace(),
+                dmform.getAddress(),
+                new LatLng(37.0987344264014, 126.902601295029)
+        ));
 
         return "redirect:/";
     }
 
     private boolean isValidDmform(dmForm dmform) throws IOException {
-        if(dmform.getAddress()==""||dmform.getContent()=="")
-            return false;
-
         for(dCode code:dMservice.getdCodes())
             if(code.getCodeNum().equals(dmform.getdCode()))
                 return true;
