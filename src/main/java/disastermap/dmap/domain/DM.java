@@ -1,7 +1,6 @@
 package disastermap.dmap.domain;
 
-import java.util.Arrays;
-import java.util.Date;
+import java.sql.Date;
 
 public class DM implements Cloneable{
 
@@ -10,7 +9,9 @@ public class DM implements Cloneable{
     //산사태: 01, 홍수(침수): 02
     private String disasterCode, content;
     private KakaoPlace kakaoPlace;
-    private Date date = new Date();
+
+    private java.util.Date utildate = new java.util.Date();
+    private Date date = new Date(utildate.getTime());
     private boolean valid = true;
 
     public DM(){}
@@ -26,6 +27,15 @@ public class DM implements Cloneable{
         this.disasterCode = disasterCode;
         this.content = content;
         this.kakaoPlace = new KakaoPlace(latLng, place, address);
+    }
+
+    public DM(Long id, String disasterCode, String content, String place, String address, LatLng latLng, Date date, boolean valid) {
+        this.id = id;
+        this.disasterCode = disasterCode;
+        this.content = content;
+        this.kakaoPlace = new KakaoPlace(latLng, place, address);
+        this.date = date;
+        this.valid = valid;
     }
 
     public boolean isValid() {
@@ -82,7 +92,9 @@ public class DM implements Cloneable{
                 "id=" + id +
                 ", disasterCode='" + disasterCode + '\'' +
                 ", content='" + content + '\'' +
+                ", kakaoPlace=" + kakaoPlace +
                 ", date=" + date +
+                ", valid=" + valid +
                 '}';
     }
 

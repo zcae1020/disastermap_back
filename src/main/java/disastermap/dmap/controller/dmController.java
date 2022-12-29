@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Set;
 
@@ -33,7 +34,7 @@ public class dmController {
     }
 
     @PostMapping("/disasterMessage/new")
-    public String createDM(dmForm dmform) throws IOException {
+    public String createDM(dmForm dmform) throws IOException, SQLException {
         if(!isValidDmform(dmform)){
             System.out.println("isunValid");
             return "DMpage/DMsubmit";
@@ -44,7 +45,7 @@ public class dmController {
                 dmform.getContent(),
                 dmform.getPlace(),
                 dmform.getAddress(),
-                new LatLng(37.0987344264014, 126.902601295029)
+                new LatLng(Double.parseDouble(dmform.getY()), Double.parseDouble(dmform.getX()))
         ));
 
         return "redirect:/";

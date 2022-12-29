@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,27 +25,27 @@ public class DMservice implements DMserviceInterface{
         this.dMrepository = dMrepository;
     }
 
-    public Long join(DM dm){
+    public Long join(DM dm) throws SQLException {
         //validate
         DM res = dMrepository.save(dm);
         return (res==null?0:res.getId());
     }
 
-    public List<DM> findDMs(){
+    public List<DM> findDMs() throws SQLException {
         return dMrepository.findAll();
     }
 
-    public List<DM> findValidDMs(){
+    public List<DM> findValidDMs() throws SQLException {
         return dMrepository.findValidAll();
     }
 
-    public DM findDM(Long id){
+    public DM findDM(Long id) throws SQLException {
         return dMrepository.findById(id);
     }
 
-    public DM delDM(Long id) throws CloneNotSupportedException { return dMrepository.delete(id); }
+    public DM delDM(Long id) throws CloneNotSupportedException, SQLException { return dMrepository.delete(id); }
 
-    public DM unvaildDM(Long id) throws CloneNotSupportedException { return dMrepository.setUnvalid(id); }
+    public DM unvaildDM(Long id) throws CloneNotSupportedException, SQLException { return dMrepository.setUnvalid(id); }
 
     public Set<dCode> getdCodes() throws IOException {
         Reader reader = new FileReader("JSONFile.json");

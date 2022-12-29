@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
+
 @Controller
 public class homeController {
 
@@ -18,14 +20,14 @@ public class homeController {
     }
 
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model) throws SQLException {
         model.addAttribute("dms", dMservice.findDMs());
 
         return "home";
     }
 
     @GetMapping("/content")
-    public String dmContent(@RequestParam String dmId, Model model){
+    public String dmContent(@RequestParam String dmId, Model model) throws SQLException {
         model.addAttribute("content", dMservice.findDM(Long.parseLong(dmId)).getContent());
         model.addAttribute("dmId", dmId);
 
@@ -33,14 +35,14 @@ public class homeController {
     }
 
     @PostMapping("/content/real")
-    public String delDm(@RequestParam String dmId) throws CloneNotSupportedException {
+    public String delDm(@RequestParam String dmId) throws CloneNotSupportedException, SQLException {
         dMservice.delDM(Long.parseLong(dmId));
 
         return "redirect:/";
     }
 
     @PostMapping("/content")
-    public String unvalidDm(@RequestParam String dmId) throws CloneNotSupportedException {
+    public String unvalidDm(@RequestParam String dmId) throws CloneNotSupportedException, SQLException {
         dMservice.unvaildDM(Long.parseLong(dmId));
 
         return "redirect:/";

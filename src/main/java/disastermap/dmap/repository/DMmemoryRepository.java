@@ -42,6 +42,15 @@ public class DMmemoryRepository implements DMrepository{
                 "경기 화성시 진안동",
                 new LatLng(37.2131834921958, 127.029827893536)
         ));
+
+        this.dmArrayList.add(new DM(
+                ++ID,
+                "01",
+                "[서초구청] 태풍 북상으로 인해 우면산, 청계산 등 서초구 관내 등산로(산책로)를 전면 폐쇄하오니 입산 및 산림 연접부 접근을 삼가시기 바랍니다.",
+                "우면산",
+                "서울 서초구 우면동 산 36",
+                new LatLng(37.47087527804635, 127.00864686779337)
+        ));
     }
 
     public DMmemoryRepository() {
@@ -55,6 +64,7 @@ public class DMmemoryRepository implements DMrepository{
     public DM save(DM dm) {
         dm.setId(++ID);
         dmArrayList.add(dm);
+//        System.out.println(dm);
         return dm;
     }
 

@@ -35,4 +35,13 @@ public class KakaoPlace {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "KakaoPlace{" +
+                "latLng=" + latLng +
+                ", place='" + place + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

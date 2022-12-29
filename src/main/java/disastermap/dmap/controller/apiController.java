@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class apiController {
 
     @ResponseBody
     @GetMapping("/api")
-    public List<DM> dmApi(){
+    public List<DM> dmApi() throws SQLException {
         List<DM> list = dMservice.findValidDMs();
         return list;
     }

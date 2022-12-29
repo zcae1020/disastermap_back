@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @SpringBootTest
@@ -16,7 +17,7 @@ public class serviceTest {
     @Autowired DMrepository dMrepository;
 
     @Test
-    void join(){
+    void join() throws SQLException {
         DM dm = new DM();
         dm.setContent("침수");
         dm.setDisasterCode("02");
@@ -27,7 +28,7 @@ public class serviceTest {
     }
 
     @Test
-    void findAll(){
+    void findAll() throws SQLException {
         List<DM> list = dMservice.findDMs();
 
         Assertions.assertThat(list).isEqualTo(null);
