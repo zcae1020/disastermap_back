@@ -9,20 +9,22 @@ public class DM implements Cloneable{
     //산사태: 01, 홍수(침수): 02
     private String disasterCode, content;
     private KakaoPlace kakaoPlace;
-
-    private java.util.Date utildate = new java.util.Date();
-    private Date date = new Date(utildate.getTime());
+    private Date date;
     private boolean valid = true;
 
     public DM(){}
 
     public DM(String disasterCode, String content, String place, String address, LatLng latLng) {
+        java.util.Date utildate = new java.util.Date();
+        this.date = new Date(utildate.getTime());
         this.disasterCode = disasterCode;
         this.content = content;
         this.kakaoPlace = new KakaoPlace(latLng, place, address);
     }
 
     public DM(Long id, String disasterCode, String content, String place, String address, LatLng latLng) {
+        java.util.Date utildate = new java.util.Date();
+        this.date = new Date(utildate.getTime());
         this.id = id;
         this.disasterCode = disasterCode;
         this.content = content;

@@ -17,6 +17,8 @@ public class JDBCrepo implements DMrepository {
         String pw = "1234";
 
         conn = DriverManager.getConnection(url, id, pw);
+
+        //create table disaster (id serial primary key, disastercode varchar(10), contents varchar(1024), place varchar(256), address varchar(256), latitude numeric(25,20), longitude numeric(25,20), now date, isvalid boolean)
     }
 
     @Override
@@ -54,7 +56,7 @@ public class JDBCrepo implements DMrepository {
 
         LatLng latLng = new LatLng(rs.getDouble(6), rs.getDouble(7));
 
-        DM disaster = new DM(rs.getLong(1), rs.getString(2),  rs.getString(3),  rs.getString(4),  rs.getString(5), latLng, rs.getDate(8), rs.getBoolean(9));
+        DM disaster = new DM(id, rs.getString(2),  rs.getString(3),  rs.getString(4),  rs.getString(5), latLng, rs.getDate(8), rs.getBoolean(9));
 
         return disaster;
     }
